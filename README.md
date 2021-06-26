@@ -46,7 +46,54 @@ docker run -i loadimpact/k6 run - <test-k6.js
 
 
 
+Create a new scripts with some optinos 
 
+```javascript
+//test-k6-options.js
+
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+export const options = {
+  stages: [
+    { duration: '30s', target: 20 },
+    { duration: '1m30s', target: 10 },
+    { duration: '20s', target: 0 },
+  ],
+};
+
+export default function () {
+  http.get('https://test.k6.io');
+  sleep(1);
+}
+```
+
+
+
+```bash
+docker run -i loadimpact/k6 run - <scripts/test-k6-options.js
+```
+
+
+
+
+
+Generate output 
+
+```bash
+docker run --rm -i -v "$PWD:/work" loadimpact/k6 run --out json=/work/out.json /work/test-k6.js
+```
+
+
+
+Test plan
+
+- Scenarios 
+  - open market (x users)
+  - closed market (y users)
+- open market
+  - Have some users streaming in realtime (10 users)
+- Several users just create snapshot (simulate closed market)
 
 ### Todo
 
