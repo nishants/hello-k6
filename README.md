@@ -1,6 +1,7 @@
 ### Todo
 
 - [ ] How to get vues/duration in tests ?
+- [ ] How to import signal r in a test ?
 
 
 
