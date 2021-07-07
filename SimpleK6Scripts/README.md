@@ -1,3 +1,9 @@
+### Run with local module 
+
+```bash
+docker run --rm -i -v "$PWD:/k6" loadimpact/k6 run --out json=/k6/out/require-output.json /k6/scripts/test-require.js
+```
+
 
 
 ### Todo
@@ -6,6 +12,7 @@
 - [ ] How to import signal r in a test ?
 
 
+Run
 
 
 
