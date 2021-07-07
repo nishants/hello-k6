@@ -8,12 +8,7 @@ docker run -i loadimpact/k6 run - <test-k6.js
 docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js
 
 # Run with output
-docker run --rm -i -v "$PWD/scripts:/work" loadimpact/k6 run --out json=/work/out.json /work/test-k6.js
-
-
-docker run -v "$PWD/scripts:/work" loadimpact/k6 run --out json=/work/out.json /work/test-k6.js
-
-
+docker run --rm -i -v "$PWD:/k6" loadimpact/k6 run --out json=/k6/out/report.json /k6/scripts/test-k6.js
 ```
 
 
